@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import numpy as np
 import pandas as pd
+import sys
 
 proxies = { }
 
@@ -50,7 +51,7 @@ for i in movies:
             movie_comments.append(comment)
             count += 1
             print(count)
-            for m in range(0,2):
+            for m in range(0,int(sys.argv[1])):
                 r = requests.get(user_all_watched_prefix + comment["user_id"] + user_all_watched_postfix + "&start=" + str(m*15),
                                  proxies=proxies, cookies=cookies, headers=headers)
                 soup = BeautifulSoup(r.content)
