@@ -5,8 +5,8 @@
 python3 runSpider.py [用户观看page深度]
 
 ## todo
-- data clearning 
-- db?
-- data unique
-- root 
-- 循环深度
+- [x] data clearning
+- [x] db?
+- [x] data unique
+- [ ] root 
+- [ ] 循环深度
