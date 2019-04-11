@@ -17,9 +17,9 @@ url = "https://movie.douban.com/chart"
 all_comment_postfix = "comments?sort=new_score&status=P"
 user_all_watched_postfix = "/collect?&sort=time"
 user_all_watched_prefix = "https://movie.douban.com/people/"
-# movie_type = ["剧情" , "喜剧" , "动作" , "爱情" , "科幻" , "动画" , "悬疑" , "惊悚" , "恐怖" , "犯罪" , "同性" , "音乐" , "歌舞" , "传记" , "历史" , "战争" , "西部" , "奇幻" , "冒险" , "灾难" , "武侠" , "情色" ]
+#movie_type = ["剧情" , "喜剧" , "动作" , "爱情" , "科幻" , "动画" , "悬疑" , "惊悚" , "恐怖" , "犯罪" , "同性" , "音乐" , "歌舞" , "传记" , "历史" , "战争" , "西部" , "奇幻" , "冒险" , "灾难" , "武侠" , "情色" ]
 #
-# #movie_type = ["剧情" , "喜剧", "动作", "爱情" ,"科幻", "动画", "悬疑", "惊悚", "恐怖", "纪录片" ,"短片", "情色", "同性", "音乐", "歌舞", "家庭" , "传记", "历史" ,"战争" ,"犯罪", "西部", "奇幻" ,"冒险", "灾难", "武侠", "古装" ,"运动", "黑色电影"]
+movie_type = ["剧情" , "喜剧", "动作", "爱情" ,"科幻", "动画", "悬疑", "惊悚", "恐怖", "纪录片" ,"短片", "情色", "同性", "音乐", "歌舞", "家庭" , "传记", "历史" ,"战争" ,"犯罪", "西部", "奇幻" ,"冒险", "灾难", "武侠", "古装" ,"运动", "黑色电影"]
 # movie_type_rank_prefix = "https://movie.douban.com/tag/#/?sort=U&range=0,10&tags="
 # for type in movie_type:
 #     r = requests.get(movie_type_rank_prefix + type, proxies=proxies, cookies=cookies, headers=headers)
@@ -27,21 +27,21 @@ user_all_watched_prefix = "https://movie.douban.com/people/"
 #     print(soup)
 #     print(soup.find_all('div',class_='info'))
 
-api_url = 'http://api.douban.com/v2/movie/top250?&start=0&count=250&apikey=0df993c66c0c636e29ecbb5344252a4a'
-str = requests.get(api_url).content
-j = json.loads(str)
-movies = []
-for i in j["subjects"]:
-    movies.append(i['alt'])
-# r = requests.get(url ,proxies = proxies , cookies = cookies , headers = headers)
-# soup = BeautifulSoup(r.content)
-# movies = soup.find_all('a',class_='nbg')
-# #movies = movies[0:1]
+# api_url = 'http://api.douban.com/v2/movie/top250?&start=0&count=250&apikey=0df993c66c0c636e29ecbb5344252a4a'
+# str = requests.get(api_url).content
+# j = json.loads(str)
+# movies = []
+# for i in j["subjects"]:
+#     movies.append(i['alt'])
+r = requests.get(url ,proxies = proxies , cookies = cookies , headers = headers)
+soup = BeautifulSoup(r.content)
+movies = soup.find_all('a',class_='nbg')
+#movies = movies[0:1]
 movie_comments = []
 
 
 
-col = ["user_id" , "user_name" , "movie_url" , "movie_img" , "rate" , "movie_name"]
+col = ["user_id" , "user_name" , "movie_url" , "movie_img" , "rate" , "movie_name" , "type"]
 count = 0
 for i in movies:
 
@@ -63,7 +63,12 @@ for i in movies:
             print(i.img["src"])
             print(c.find("span" , class_="rating")["title"])
             print(i["title"])
-            comment = {"user_id":c.a["href"].split("/")[4] , "user_name" :c.a.get_text(), "movie_url" :i["href"], "movie_img" :i.img["src"], "rate":c.find("span" , class_="rating")["title"] , "movie_name":i["title"]}
+            types = BeautifulSoup(requests.get(i["href"]).content).find_all("span" , property = "v:genre")
+            type_str = ""
+            for t in types:
+                type_str += t.get_text() + "/"
+            print(type_str)
+            comment = {"user_id":c.a["href"].split("/")[4] , "user_name" :c.a.get_text(), "movie_url" :i["href"], "movie_img" :i.img["src"], "rate":c.find("span" , class_="rating")["title"] , "movie_name":i["title"] , "type" : type_str}
             movie_comments.append(comment)
             count += 1
             print(count)
@@ -77,11 +82,19 @@ for i in movies:
                     # print(u_w_movie.find_all("li")[2].span["class"][0])
                     # print(u_w_movie.find("a" , class_="nbg")["href"])
                     # print(u_w_movie.img)
+
+                    intro = u_w_movie.find("li" , class_ = "intro").get_text()
+                    cur_type_str = ""
+                    for key in intro.replace(" " , "").split("/"):
+                        if key in movie_type:
+                            cur_type_str += key + "/"
+                    print(cur_type_str)
                     user_watched_comment = {"user_id": comment["user_id"], "user_name": comment["user_name"],
                                             "movie_url": u_w_movie.find("a", class_="nbg")["href"],
                                             "movie_img": u_w_movie.img["src"],
                                             "rate": u_w_movie.find_all("li")[2].span["class"][0],
-                                            "movie_name": u_w_movie.img["alt"]}
+                                            "movie_name": u_w_movie.img["alt"],
+                                            "type" : cur_type_str}
                     movie_comments.append(user_watched_comment)
                     count += 1
                     print(count)
@@ -90,7 +103,7 @@ for i in movies:
     #movie_comments.append({"movie_name" : i["title"] , "movie_url" : i["href"] , "movie_img" : i.img["src"] , "comments" : user_comments})
 
 df = pd.DataFrame(movie_comments)
-df.to_csv("data.csv" ,encoding='utf_8_sig')
+df.to_csv("data.csv" ,encoding='utf_8_sig' , index=False)
 
 
 
