@@ -8,7 +8,8 @@ def clean(file):
     data = data.dropna()
     data = data[data.rate != "date"]
     print(data["rate"].unique())
-
+    data = data[~data["user_name"].str.contains("'")]
+    data = data[~data["user_name"].str.contains("'")]
     data.loc[data.rate == "很差", "rate"] = 1
     data.loc[data.rate == "较差", "rate"] = 2
     data.loc[data.rate == "还行", "rate"] = 3
@@ -22,9 +23,6 @@ def clean(file):
     data.loc[data.rate == "rating5-t", "rate"] = 5
     print(data["rate"].unique())
     return data
-
-
-
 
 
 

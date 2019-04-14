@@ -124,7 +124,7 @@ for i in movies:
                     count += 1
                     total += 1
                     print(count)
-                    if count == 10000:
+                    if count == 500:
                         df = pd.DataFrame(movie_comments)
                         file_name = "data_" + str(unicode) + ".csv"
                         df.to_csv(file_name, encoding='utf_8_sig', index=False)
