@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 
 
-def clean():
-    data = pd.read_csv("./data.csv")
+def clean(file):
+    data = pd.read_csv(file)
     print(data)
     data = data.dropna()
     data = data[data.rate != "date"]
@@ -23,8 +23,7 @@ def clean():
     print(data["rate"].unique())
     return data
 
-df = clean()
-print(df.columns)
+
 
 
 

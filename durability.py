@@ -18,13 +18,15 @@ def saveToDB(row):
     print(sql)
     cursor.execute(sql.encode("utf-8"))
 
-data = clean()
+
 # print(data)
 
-for name , group in data.groupby("user_id"):
-    df = pd.DataFrame(group.drop_duplicates("movie_name"))
-    df = df.loc[:,['rate' , 'movie_url' , 'movie_name' , 'user_name' , 'user_id' , 'movie_img' , 'type']]
-    print(df.columns)
-    #print(df.columns)
-    df.apply(saveToDB ,axis = 1)
-    conn.commit()
+def durability(file):
+    data = clean(file)
+    for name, group in data.groupby("user_id"):
+        df = pd.DataFrame(group.drop_duplicates("movie_name"))
+        df = df.loc[:, ['rate', 'movie_url', 'movie_name', 'user_name', 'user_id', 'movie_img', 'type']]
+        print(df.columns)
+        # print(df.columns)
+        df.apply(saveToDB, axis=1)
+        conn.commit()
