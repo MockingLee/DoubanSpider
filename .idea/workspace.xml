@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/runSpider.py" line="60" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c20093f2-584c-49b0-ad95-0c6985070a9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataClean.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataClean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/runSpider.py" afterDir="false" />
-    </list>
+    <list default="true" id="c20093f2-584c-49b0-ad95-0c6985070a9e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/runSpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="126" column="36" lean-forward="true" selection-end-line="152" />
+            <state relative-caret-position="1122">
+              <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -35,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataClean.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="575">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -126,8 +122,8 @@
         <option value="$PROJECT_DIR$/durability.py" />
         <option value="$PROJECT_DIR$/Test.py" />
         <option value="$PROJECT_DIR$/data_0.csv" />
-        <option value="$PROJECT_DIR$/dataClean.py" />
         <option value="$PROJECT_DIR$/runSpider.py" />
+        <option value="$PROJECT_DIR$/dataClean.py" />
       </list>
     </option>
   </component>
@@ -338,12 +334,12 @@
       <workItem from="1553937201194" duration="38000" />
       <workItem from="1554089927907" duration="8825000" />
       <workItem from="1555239815367" duration="6740000" />
-      <workItem from="1555251987216" duration="762000" />
+      <workItem from="1555251987216" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34204000" />
+    <option name="totallyTimeSpent" value="34466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -467,22 +463,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataClean.py">
+    <entry file="file://$PROJECT_DIR$/runSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="1122">
+          <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/runSpider.py">
+    <entry file="file://$PROJECT_DIR$/dataClean.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="126" column="36" lean-forward="true" selection-end-line="152" />
+        <state relative-caret-position="575">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
