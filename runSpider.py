@@ -124,16 +124,16 @@ for i in movies:
                     count += 1
                     total += 1
                     print(count)
-                    if count == 500:
+                    if count == 1000:
                         df = pd.DataFrame(movie_comments)
                         file_name = "data_" + str(unicode) + ".csv"
                         df.to_csv(file_name, encoding='utf_8_sig', index=False)
                         unicode += 1
                         durability(file_name)
                         count = 0
-                        for i in range(10):
+                        for i in range(5):
                             print("total : " + str(total) , "Sleeping Zzz")
-                            time.sleep(3600)
+                            time.sleep(3)
 
 
         movie_comments.append(comment)
